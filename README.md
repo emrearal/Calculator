@@ -1,2 +1,3 @@
-# calculator
- This is an app in java . It is a simple calculator in JFrame
+# hesap makinesi
+
+ Java 'da yazılmış basit hesap makinesi. Java da yazdığım ilk uygulama 
