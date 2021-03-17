@@ -16,7 +16,7 @@ public class hesapmakinesi implements ActionListener {
 	static JButton button1,button2,button3,button4,button5,button6,button7,button8,button9,button0;
 	static JButton buttonplus,buttonminus,buttondiv,buttonmult,buttonequ,buttonclr,buttonpoint;
 	static JTextField text1;
-	static String d1="",d2="",operator="",eskioperator="" ,disp; 
+	static String d1="",d2="",operator="",eskioperator="+" ,disp; 
 	static double a1=0,a2=0;
 	
 	public static void torpule() {
@@ -58,9 +58,10 @@ public class hesapmakinesi implements ActionListener {
 		
 		double sonuc=0;
 		disp ="";
-				
+		esittir();
+		eskioperator=operator;
+		
 		if (operator.equals("+")) {
-			
 			disp = text1.getText();
 			a2 = Double.valueOf(disp);
 			sonuc= a1+a2;
@@ -73,8 +74,7 @@ public class hesapmakinesi implements ActionListener {
 				}
 			if (a1==0) {
 				a1=1;
-				
-			}
+				}
 			disp = text1.getText();
 			a2 = Double.valueOf(disp);
 			sonuc= a1*a2;
@@ -124,13 +124,18 @@ public class hesapmakinesi implements ActionListener {
 	
 	public static void esittir() {
 		
+		if(eskioperator.equals("+") && operator.equals("") && a1==0 && a2==00) {
+			return;
+		}
+		
+		
 		double sonuc = 0;
 		disp = text1.getText();
 		a2 = Double.valueOf(disp);
-		if (operator.equals("+")) {
+		if (eskioperator.equals("+")) {
 		sonuc= a1+a2;
 		}
-		if (operator.equals("x")) {
+		if (eskioperator.equals("x")) {
 			if (a2==0) {
 				a2=1 ;
 				}
@@ -142,11 +147,11 @@ public class hesapmakinesi implements ActionListener {
 			sonuc= a1*a2;
 			}
 		
-		if (operator.equals("eksi")) {
+		if (eskioperator.equals("eksi")) {
 			sonuc= a1-a2;
 				
 			}
-		if (operator.equals("/")) {
+		if (eskioperator.equals("/")) {
 			
 			if (a1==0) {
 				a1=1;
@@ -199,12 +204,13 @@ public class hesapmakinesi implements ActionListener {
 		buttonminus = new JButton("-");
 		buttondiv = new JButton("/");
 		buttonmult = new JButton("x");
-	        buttonequ = new JButton("=");
+	    buttonequ = new JButton("=");
 		buttonclr = new JButton("CLR");
 		buttonpoint = new JButton(".");
 		
-		text1 = new JTextField ();
+		text1 = new JTextField ("0");
 		text1.setHorizontalAlignment(SwingConstants.RIGHT);
+		text1.setEditable(false);
 		
 		text1.setFont(new Font("Serif", Font.PLAIN, 30));
 			
@@ -427,6 +433,7 @@ public class hesapmakinesi implements ActionListener {
 			d1="";
 			d2="";
 			operator="";
+			eskioperator="+";
 	}
 }
 		
